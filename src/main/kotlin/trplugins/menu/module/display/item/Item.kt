@@ -38,6 +38,9 @@ class Item(
     ): ItemStack {
         val item = generate(session, texture.current(session.id)!!, name, lore, meta)
         cache[session.id] = item
+        if (name?.lowercase()?.contains("#{Air}", true) == true) {
+            item.type = Material.AIR
+        }
         return item
     }
 
